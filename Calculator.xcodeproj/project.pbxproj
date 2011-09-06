@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B82BE28C1416D5E700ECDB15 /* blue_button.png in Resources */ = {isa = PBXBuildFile; fileRef = B82BE28B1416D5E700ECDB15 /* blue_button.png */; };
+		B82BE2921416D88600ECDB15 /* brown_button.png in Resources */ = {isa = PBXBuildFile; fileRef = B82BE2911416D88600ECDB15 /* brown_button.png */; };
 		B83F33B51398574700DEFE04 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B83F33B41398574700DEFE04 /* icon.png */; };
 		B858DD4913A538510028F025 /* DVQ-HandcraftedWood.png in Resources */ = {isa = PBXBuildFile; fileRef = B858DD4813A538500028F025 /* DVQ-HandcraftedWood.png */; };
 		B85D22371390988D00AA419B /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = B85D22361390988D00AA419B /* background.png */; };
@@ -25,7 +27,6 @@
 		B8B9491413908E4100297C2F /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8B9491213908E4100297C2F /* MainWindow.xib */; };
 		B8B9491713908E4100297C2F /* CalculatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B9491613908E4100297C2F /* CalculatorViewController.m */; };
 		B8B9491A13908E4100297C2F /* CalculatorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8B9491813908E4100297C2F /* CalculatorViewController.xib */; };
-		B8E2AEFE1415ABA4007C1245 /* brown_button.png in Resources */ = {isa = PBXBuildFile; fileRef = B8E2AEFD1415ABA4007C1245 /* brown_button.png */; };
 		B8E2AF051415ABB3007C1245 /* orange_button.png in Resources */ = {isa = PBXBuildFile; fileRef = B8E2AF021415ABB3007C1245 /* orange_button.png */; };
 		B8E2AF091416C395007C1245 /* black_button.png in Resources */ = {isa = PBXBuildFile; fileRef = B8E2AF081416C395007C1245 /* black_button.png */; };
 		B8EDD121139202E500E4F1AA /* FlipSideView.m in Sources */ = {isa = PBXBuildFile; fileRef = B8EDD11F139202E500E4F1AA /* FlipSideView.m */; };
@@ -33,6 +34,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B82BE28B1416D5E700ECDB15 /* blue_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue_button.png; sourceTree = "<group>"; };
+		B82BE2911416D88600ECDB15 /* brown_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = brown_button.png; sourceTree = "<group>"; };
 		B83F33B41398574700DEFE04 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		B858DD4813A538500028F025 /* DVQ-HandcraftedWood.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DVQ-HandcraftedWood.png"; sourceTree = "<group>"; };
 		B85D22361390988D00AA419B /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
@@ -56,7 +59,6 @@
 		B8B9491513908E4100297C2F /* CalculatorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalculatorViewController.h; sourceTree = "<group>"; };
 		B8B9491613908E4100297C2F /* CalculatorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalculatorViewController.m; sourceTree = "<group>"; };
 		B8B9491913908E4100297C2F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/CalculatorViewController.xib; sourceTree = "<group>"; };
-		B8E2AEFD1415ABA4007C1245 /* brown_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = brown_button.png; sourceTree = "<group>"; };
 		B8E2AF021415ABB3007C1245 /* orange_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orange_button.png; sourceTree = "<group>"; };
 		B8E2AF081416C395007C1245 /* black_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = black_button.png; sourceTree = "<group>"; };
 		B8EDD11E139202E500E4F1AA /* FlipSideView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlipSideView.h; sourceTree = "<group>"; };
@@ -90,9 +92,10 @@
 				B88C1D361393F170005A8E2C /* JetBlack.png */,
 				B865442E1394484C00180F16 /* SleekGray.png */,
 				B83F33B41398574700DEFE04 /* icon.png */,
-				B8E2AEFD1415ABA4007C1245 /* brown_button.png */,
 				B8E2AF021415ABB3007C1245 /* orange_button.png */,
 				B8E2AF081416C395007C1245 /* black_button.png */,
+				B82BE28B1416D5E700ECDB15 /* blue_button.png */,
+				B82BE2911416D88600ECDB15 /* brown_button.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -213,9 +216,10 @@
 				B865442F1394484C00180F16 /* SleekGray.png in Resources */,
 				B83F33B51398574700DEFE04 /* icon.png in Resources */,
 				B858DD4913A538510028F025 /* DVQ-HandcraftedWood.png in Resources */,
-				B8E2AEFE1415ABA4007C1245 /* brown_button.png in Resources */,
 				B8E2AF051415ABB3007C1245 /* orange_button.png in Resources */,
 				B8E2AF091416C395007C1245 /* black_button.png in Resources */,
+				B82BE28C1416D5E700ECDB15 /* blue_button.png in Resources */,
+				B82BE2921416D88600ECDB15 /* brown_button.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

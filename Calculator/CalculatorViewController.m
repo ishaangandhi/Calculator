@@ -37,8 +37,8 @@ static NSInteger imageNumber;
 -(void)viewWillAppear:(BOOL)animated {
     switch (imageNumber) {
         case 0:
-            [backgroundImage setImage:[UIImage imageNamed:@"background.png"]];
-            [screenImage setAlpha:1.00];
+            [backgroundImage setImage:[UIImage imageNamed:@"DVQ-HandcraftedWood.png"]];
+            [screenImage setAlpha:0.70];
             break;
         case 1:
             [backgroundImage setImage:[UIImage imageNamed:@"GraySmudge.png"]];
@@ -61,8 +61,8 @@ static NSInteger imageNumber;
             [screenImage setAlpha:0.85];
             break;
         case 6:
-            [backgroundImage setImage:[UIImage imageNamed:@"DVQ-HandcraftedWood.png"]];
-            [screenImage setAlpha:0.50];
+            [backgroundImage setImage:[UIImage imageNamed:@"background.png"]];
+            [screenImage setAlpha:1.00];
             break;
     }
 }

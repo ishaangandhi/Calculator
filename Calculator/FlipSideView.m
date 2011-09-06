@@ -32,13 +32,13 @@
     [super viewDidLoad];
     
     backgrounds = [[NSMutableArray alloc] init];
-    [backgrounds addObject:@"Grainy Black"];
+    [backgrounds addObject:@"Hand Crafed Wookd(DVQ)"];
     [backgrounds addObject:@"Steel"];
     [backgrounds addObject:@"Sleek Gray"];
     [backgrounds addObject:@"Black Smudge"];
     [backgrounds addObject:@"Jet Black"];
     [backgrounds addObject:@"Sky Blue"];    
-    [backgrounds addObject:@"Handcrafted Wood (DVQ)"];    
+    [backgrounds addObject:@"Grainy Black"];    
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)thePickerView {
