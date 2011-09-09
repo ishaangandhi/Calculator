@@ -13,56 +13,75 @@
 static NSInteger imageNumber;
 
 @implementation CalculatorViewController
+@synthesize orientation;
 //@synthesize facebook = _facebook;
 
 - (void)dealloc {
     [errorField release];
     [waitingOperation release];
     [backgroundImage release];
- //   [screenCollection release];
     [super dealloc];
 }
 
 -(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
     
-//    if(UIInterfaceOrientationIsPortrait(toInterfaceOrientation)) {
-//        self.view = port;
-//    }
-//    if(UIInterfaceOrientationIsLandscape(toInterfaceOrientation)) {
-//        self.view = land;
-//    }
-    return (toInterfaceOrientation == UIInterfaceOrientationPortrait);
+    if(UIInterfaceOrientationIsPortrait(toInterfaceOrientation)) {
+        self.view = port;
+    }
+    if(UIInterfaceOrientationIsLandscape(toInterfaceOrientation)) {
+        self.view = land;
+    }
+    return YES;
 }
 
 -(void)viewWillAppear:(BOOL)animated {
-    switch (imageNumber) {
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    int index = [prefs integerForKey:@"backgroundImageIndex"];
+    [screen setText:[NSString stringWithFormat:@"%d", index]];
+    switch (index) {
         case 0:
             [backgroundImage setImage:[UIImage imageNamed:@"DVQ-HandcraftedWood.png"]];
+            [landBackgroundImage setImage:[UIImage imageNamed:@"DVQ-HandcraftedWood.png"]];
             [screenImage setAlpha:0.70];
+            [landScreenImage setAlpha:0.70];
             break;
         case 1:
             [backgroundImage setImage:[UIImage imageNamed:@"GraySmudge.png"]];
+            [landBackgroundImage setImage:[UIImage imageNamed:@"GraySmudge.png"]];
             [screenImage setAlpha:1.00];
+            [landScreenImage setAlpha:1.00];
             break;
         case 2:
             [backgroundImage setImage:[UIImage imageNamed:@"SleekGray.png"]];
+            [landBackgroundImage setImage:[UIImage imageNamed:@"SleekGray.png"]];
             [screenImage setAlpha:1.00];
+            [landScreenImage setAlpha:1.00];
             break;
         case 3:
             [backgroundImage setImage:[UIImage imageNamed:@"BlackSmudge.png"]];
+            [landBackgroundImage setImage:[UIImage imageNamed:@"BlackSmudge.png"]];
             [screenImage setAlpha:1.00];
+            [landScreenImage setAlpha:1.00];
             break;
         case 4:
             [backgroundImage setImage:[UIImage imageNamed:@"JetBlack.png"]];
+            [landBackgroundImage setImage:[UIImage imageNamed:@"JetBlack.png"]];
             [screenImage setAlpha:1.00];
+            [landScreenImage setAlpha:1.00];
+
             break;
         case 5:
-            [backgroundImage setImage:[UIImage imageNamed:@"BabyBlue.png"]];
-            [screenImage setAlpha:0.85];
+            [backgroundImage setImage:[UIImage imageNamed:@"GreyGradient.png"]];
+            [landBackgroundImage setImage:[UIImage imageNamed:@"GreyGradient.png"]];
+            [screenImage setAlpha:1.00];
+            [landScreenImage setAlpha:1.00];
             break;
         case 6:
             [backgroundImage setImage:[UIImage imageNamed:@"background.png"]];
+            [landBackgroundImage setImage:[UIImage imageNamed:@"background.png"]];
             [screenImage setAlpha:1.00];
+            [landScreenImage setAlpha:1.00];
+
             break;
     }
 }
@@ -91,20 +110,26 @@ static NSInteger imageNumber;
     waitingOperand = 0;
     [screen setText:@"0"];
     [errorField setText:@""];
+    [landScreen setText:@"0"];
+    [landErrorField setText:@""];
 }
 
 -(IBAction)digitPressed:(UIButton *)sender {
     NSString *digit = [[sender titleLabel] text];
     [errorField setText:@""];
+    [landErrorField setText:@""];
     if([[screen text] length] > 14) {
         [errorField setText:@"Maximum digits on screen"];
-    }
+        [landErrorField setText:@"Maximum digits on screen"];
+}
     else {
         if (userIsInTheMiddleOfTypingANumber && [screen text] != @"0") {
-            [screen setText:[[screen text] stringByAppendingString:digit]];        
+            [screen setText:[[screen text] stringByAppendingString:digit]];
+            [landScreen setText:[[screen text] stringByAppendingString:digit]];        
         }
         else {
             [screen setText:digit];
+            [landScreen setText:digit];
             userIsInTheMiddleOfTypingANumber = YES;
         }
     }
@@ -119,6 +144,7 @@ static NSInteger imageNumber;
 
 -(IBAction)operationPressed:(UIButton *)sender {
     [errorField setText:@""];
+    [landErrorField setText:@""];
     if (userIsInTheMiddleOfTypingANumber) {
         operand = [[screen text] doubleValue];
         userIsInTheMiddleOfTypingANumber = NO;
@@ -157,6 +183,7 @@ static NSInteger imageNumber;
     [fmtr setUsesGroupingSeparator:NO];
     
     [screen setText:[fmtr stringFromNumber:result]];
+    [landScreen setText:[fmtr stringFromNumber:result]];
     [fmtr release];
 }
 
@@ -170,6 +197,7 @@ static NSInteger imageNumber;
 
 -(IBAction)mRecall {
     [screen setText:[NSString stringWithFormat:@"%g", memory]];
+    [landScreen setText:[NSString stringWithFormat:@"%g", memory]];
 }
 
 -(IBAction)mTwoClear {
@@ -182,12 +210,12 @@ static NSInteger imageNumber;
 
 -(IBAction)mTwoRecall {
     [screen setText:[NSString stringWithFormat:@"%g", memoryTwo]];
+    [landScreen setText:[NSString stringWithFormat:@"%g", memoryTwo]];
 }
 
 -(IBAction)pointPressed {
     if(userIsInTheMiddleOfTypingANumber) {
         NSString *screenText = [screen text];
-        NSLog(@"%@", screenText);
         BOOL points = NO;
         for (int i = 0; i < [screenText length]; i++) {
             if ([screenText characterAtIndex:i] == '.') {
@@ -196,13 +224,16 @@ static NSInteger imageNumber;
         }
         if (points) {
             [errorField setText:@"Error: Decimal point already in operand"];
+            [landErrorField setText:@"Error: Decimal point already in operand"];
         }
         else {
             [screen setText:[screenText stringByAppendingString:@"."]];
+            [landScreen setText:[screenText stringByAppendingString:@"."]];
         }
     }
     else {
         [screen setText:@"0."];
+        [landScreen setText:@"0."];
          userIsInTheMiddleOfTypingANumber = YES;
     }
 }

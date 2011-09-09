@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 
 
-@interface CalculatorViewController : UIViewController //<FBRequestDelegate,
-//FBDialogDelegate,
-//FBSessionDelegate>
+@interface CalculatorViewController : UIViewController 
 {
+    BOOL orientation;
+    
     //Calculator Values
     BOOL userIsInTheMiddleOfTypingANumber;    
     double operand;
@@ -23,12 +23,19 @@
     
     //Interface
     IBOutlet UILabel *screen;
-    //IBOutletCollection(UILabel) UILabel *screenCollection;
+    IBOutlet UILabel *landScreen;
+    
     IBOutlet UIImageView *screenImage;
+    IBOutlet UIImageView *landScreenImage;
+    
     IBOutlet UILabel *errorField;
-    //IBOutlet UIView *land;
-    //IBOutlet UIView *port;
+    IBOutlet UILabel *landErrorField;
+    
     IBOutlet UIImageView *backgroundImage;
+    IBOutlet UIImageView *landBackgroundImage;
+     
+    IBOutlet UIView *port;
+    IBOutlet UIView *land;
     
     //Facebook Elements
     //IBOutlet UIButton *facebookButton;
@@ -42,6 +49,8 @@
 
 //@property (nonatomic, retain) Facebook *facebook;
 //@property (nonatomic, retain) IBOutletCollection(UILabel) UILabel *screenCollection;
+
+@property BOOL orientation;
 
 -(IBAction)AC;
 -(IBAction)digitPressed:(UIButton *)sender;

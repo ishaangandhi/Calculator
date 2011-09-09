@@ -24,6 +24,10 @@
     return controller;
 }
 
+-(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
+    return YES;
+}
+
 -(IBAction) back {
     [self dismissModalViewControllerAnimated:YES];
 }
@@ -32,12 +36,12 @@
     [super viewDidLoad];
     
     backgrounds = [[NSMutableArray alloc] init];
-    [backgrounds addObject:@"Hand Crafed Wookd(DVQ)"];
+    [backgrounds addObject:@"Hand Crafed Wood(DVQ)"];
     [backgrounds addObject:@"Steel"];
     [backgrounds addObject:@"Sleek Gray"];
     [backgrounds addObject:@"Black Smudge"];
     [backgrounds addObject:@"Jet Black"];
-    [backgrounds addObject:@"Sky Blue"];    
+    [backgrounds addObject:@"Gray Gradient"];    
     [backgrounds addObject:@"Grainy Black"];    
 }
 
@@ -63,7 +67,7 @@
 -(IBAction)preview {
     switch (curBackground) {
         case 0:
-            [background setImage:[UIImage imageNamed:@"background.png"]];
+            [background setImage:[UIImage imageNamed:@"DVQ-HandcraftedWood.png"]];
             break;
         case 1:
             [background setImage:[UIImage imageNamed:@"GraySmudge.png"]];
@@ -78,10 +82,10 @@
             [background setImage:[UIImage imageNamed:@"JetBlack.png"]];
             break;
         case 5:
-            [background setImage:[UIImage imageNamed:@"BabyBlue.png"]];
+            [background setImage:[UIImage imageNamed:@"GreyGradient.png"]];
             break;
         case 6:
-            [background setImage:[UIImage imageNamed:@"DVQ-HandcraftedWood.png"]];
+            [background setImage:[UIImage imageNamed:@"background.png"]];
             break;
 
     }
@@ -90,7 +94,16 @@
 -(IBAction)set {
     
     [[self controller] changeImage:curBackground];
-    [self dismissModalViewControllerAnimated:NO];
+    
+    
+    //Save the background
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    [prefs setInteger:curBackground forKey:@"backgroundImageIndex"];
+    [prefs synchronize];
+    
+    
+    [self setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
+    [self dismissModalViewControllerAnimated:YES];
     
 }
 
