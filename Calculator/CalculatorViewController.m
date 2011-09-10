@@ -124,8 +124,10 @@ static NSInteger imageNumber;
 }
     else {
         if (userIsInTheMiddleOfTypingANumber && [screen text] != @"0") {
+            NSLog(@"%@", digit);
+            NSLog(@"%@", [[screen text] stringByAppendingString:digit]);
             [screen setText:[[screen text] stringByAppendingString:digit]];
-            [landScreen setText:[[screen text] stringByAppendingString:digit]];        
+            [landScreen setText:[[landScreen text] stringByAppendingString:digit]];        
         }
         else {
             [screen setText:digit];
