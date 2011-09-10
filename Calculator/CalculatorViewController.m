@@ -68,7 +68,7 @@ static NSInteger imageNumber;
             [landBackgroundImage setImage:[UIImage imageNamed:@"JetBlack.png"]];
             [screenImage setAlpha:1.00];
             [landScreenImage setAlpha:1.00];
-
+            
             break;
         case 5:
             [backgroundImage setImage:[UIImage imageNamed:@"GreyGradient.png"]];
@@ -81,24 +81,24 @@ static NSInteger imageNumber;
             [landBackgroundImage setImage:[UIImage imageNamed:@"background.png"]];
             [screenImage setAlpha:1.00];
             [landScreenImage setAlpha:1.00];
-
+            
             break;
     }
 }
 
 -(void)viewDidLoad {
-//    _facebook = [[Facebook alloc] initWithAppId:@"151943218210930"];
-//    _permissions =  [[NSArray arrayWithObjects: @"publish_stream",nil] retain];
-//    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-//    BOOL premiumIsActive = [prefs boolForKey:@"premiumIsActive"];
-//    if (premiumIsActive) {
-//        [facebookButton setHidden:YES];
-//        [facebookImageView setHidden:YES];
-//        [facebookLabel setHidden:YES];
-//        [infoButton setHidden:NO];
-//    } else {
-//        [infoButton setHidden:YES];
-//    }
+    //    _facebook = [[Facebook alloc] initWithAppId:@"151943218210930"];
+    //    _permissions =  [[NSArray arrayWithObjects: @"publish_stream",nil] retain];
+    //    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    //    BOOL premiumIsActive = [prefs boolForKey:@"premiumIsActive"];
+    //    if (premiumIsActive) {
+    //        [facebookButton setHidden:YES];
+    //        [facebookImageView setHidden:YES];
+    //        [facebookLabel setHidden:YES];
+    //        [infoButton setHidden:NO];
+    //    } else {
+    //        [infoButton setHidden:YES];
+    //    }
 }
 
 -(void)changeImage:(NSInteger)image {
@@ -108,6 +108,8 @@ static NSInteger imageNumber;
 -(IBAction)AC {
     operand = 0;
     waitingOperand = 0;
+    waitingOperation = nil;
+    userIsInTheMiddleOfTypingANumber = NO;
     [screen setText:@"0"];
     [errorField setText:@""];
     [landScreen setText:@"0"];
@@ -121,18 +123,21 @@ static NSInteger imageNumber;
     if([[screen text] length] > 14) {
         [errorField setText:@"Maximum digits on screen"];
         [landErrorField setText:@"Maximum digits on screen"];
-}
+    }
     else {
         if (userIsInTheMiddleOfTypingANumber && [screen text] != @"0") {
-            NSLog(@"%@", digit);
-            NSLog(@"%@", [[screen text] stringByAppendingString:digit]);
             [screen setText:[[screen text] stringByAppendingString:digit]];
             [landScreen setText:[[landScreen text] stringByAppendingString:digit]];        
         }
-        else {
+        else {        
+            if ([digit isEqualToString:@"00"])
+                return;
+            NSLog(@"%@", digit);
+            
             [screen setText:digit];
             [landScreen setText:digit];
             userIsInTheMiddleOfTypingANumber = YES;
+            
         }
     }
 }
@@ -236,7 +241,7 @@ static NSInteger imageNumber;
     else {
         [screen setText:@"0."];
         [landScreen setText:@"0."];
-         userIsInTheMiddleOfTypingANumber = YES;
+        userIsInTheMiddleOfTypingANumber = YES;
     }
 }
 

@@ -60,11 +60,11 @@
 }
 
 - (void)pickerView:(UIPickerView *)thePickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    
     curBackground = row;
-}
-
--(IBAction)preview {
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.7];
+    background.alpha = 0.5;
+    [UIView commitAnimations];
     switch (curBackground) {
         case 0:
             [background setImage:[UIImage imageNamed:@"DVQ-HandcraftedWood.png"]];
@@ -87,8 +87,15 @@
         case 6:
             [background setImage:[UIImage imageNamed:@"background.png"]];
             break;
-
     }
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.5];
+    background.alpha = 1.0;
+    [UIView commitAnimations];
+}
+
+-(IBAction)preview {
+
 }
 
 -(IBAction)set {
